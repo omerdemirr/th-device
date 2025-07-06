@@ -11,7 +11,7 @@ void initClock()
 {
     configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, NTP_SERVER1, NTP_SERVER2);
 
-    Serial.print("🕒 Saat senkronize ediliyor");
+    Serial.print("Saat senkronize ediliyor");
     int retry = 0;
     while (time(nullptr) < 100000 && retry < 10)
     {
@@ -23,11 +23,11 @@ void initClock()
 
     if (retry < 10)
     {
-        Serial.println("✅ Saat senkronize edildi: " + getTimestamp());
+        Serial.println("Saat senkronize edildi: " + getTimestamp());
     }
     else
     {
-        Serial.println("❌ Saat senkronizasyonu başarısız.");
+        Serial.println("Saat senkronizasyonu başarısız.");
     }
 }
 

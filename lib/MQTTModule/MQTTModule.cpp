@@ -31,14 +31,14 @@ void mqttLoopTask(void *pvParameters)
                 char clientId[32];
                 snprintf(clientId, sizeof(clientId), "ESP32-%s", deviceID);
 
-                Serial.print("🔌 MQTT bağlanıyor...");
+                Serial.print("MQTT bağlanıyor...");
                 if (client.connect(clientId, mqtt_username, mqtt_password))
                 {
-                    Serial.println("✅ MQTT bağlı!");
+                    Serial.println("MQTT bağlı!");
                 }
                 else
                 {
-                    Serial.printf("❌ MQTT bağlantı hatası [%d]\n", client.state());
+                    Serial.printf("MQTT bağlantı hatası [%d]\n", client.state());
                 }
             }
             else
@@ -61,7 +61,6 @@ void mqttTask(void *pvParameters)
             float hum = getHumidity();
             String timestamp = getTimestamp();
 
-            // Geçerli tarih kontrolü
             if (!timestamp.startsWith("1970"))
             {
                 char tempTopic[64], humTopic[64];
@@ -71,14 +70,12 @@ void mqttTask(void *pvParameters)
                 StaticJsonDocument<128> doc;
                 char buffer[128];
 
-                // Sıcaklık
                 doc["timestamp"] = timestamp;
                 doc["value"] = temp;
                 serializeJson(doc, buffer);
                 client.publish(tempTopic, buffer);
                 Serial.printf("📤 %s => %s\n", tempTopic, buffer);
 
-                // Nem
                 doc["value"] = hum;
                 serializeJson(doc, buffer);
                 client.publish(humTopic, buffer);

@@ -21,7 +21,7 @@ void setup()
   Serial.begin(115200);
   delay(1000);
 
-  Serial.println("🚀 Sistem başlatılıyor...");
+  Serial.println("Sistem başlatılıyor...");
   Serial.println(getTimestamp());
 
   IPAddress local_IP(192, 168, 1, 200);
@@ -41,7 +41,6 @@ void setup()
   initBLE();
   initWebServer();
 
-  // FreeRTOS görevleri
   xTaskCreate(wifiTask, "WiFiTask", 4096, NULL, 1, NULL);
   xTaskCreate(sensorTask, "SensorTask", 4096, NULL, 1, NULL);
   xTaskCreate(mqttLoopTask, "MQTTLoopTask", 4096, NULL, 1, NULL);

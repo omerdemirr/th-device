@@ -15,7 +15,7 @@ void initWebServer()
 {
     if (!SPIFFS.begin(true))
     {
-        Serial.println("❌ SPIFFS başlatılamadı!");
+        Serial.println("SPIFFS başlatılamadı!");
         return;
     }
 
@@ -32,7 +32,7 @@ void initWebServer()
                   request->send(200, "application/json", json); });
 
     server.begin();
-    Serial.println("🌐 Async Web server başlatıldı");
+    Serial.println("Async Web server başlatıldı");
 }
 
 void updateWebData(float temperature, float humidity, const String &dateStr, const String &timeStr)

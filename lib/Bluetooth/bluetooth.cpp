@@ -36,7 +36,7 @@ void bleSendSensorData(float temp, float hum)
         snprintf(buffer, sizeof(buffer), "T:%.1fC H:%.0f%%", temp, hum);
         sensorCharacteristic->setValue(buffer);
         sensorCharacteristic->notify();
-        Serial.println(String("📲 BLE notify: ") + buffer);
+        Serial.println(String("BLE notify: ") + buffer);
     }
 }
 

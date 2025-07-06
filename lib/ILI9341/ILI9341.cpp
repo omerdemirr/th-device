@@ -18,7 +18,7 @@ void initTFT()
     tft.setTextSize(2);
     tft.setTextColor(ILI9341_WHITE);
     tft.setCursor(30, 20);
-    tft.println("OMER DEMIR - 2320221036");
+    tft.println("OMER DEMIR");
 }
 
 void clearTextArea(int x, int y, int w, int h)
@@ -33,7 +33,6 @@ void updateTFT(float temperature, float humidity, const char *timeStr, const cha
 
     tft.setTextSize(3);
 
-    // --- Sıcaklık ---
     if (temperature != lastTemp)
     {
         lastTemp = temperature;
@@ -43,7 +42,6 @@ void updateTFT(float temperature, float humidity, const char *timeStr, const cha
         tft.printf("Temp: %.1f C", temperature);
     }
 
-    // --- Nem ---
     if (humidity != lastHum)
     {
         lastHum = humidity;
@@ -53,7 +51,6 @@ void updateTFT(float temperature, float humidity, const char *timeStr, const cha
         tft.printf("Humidity: %.0f %%", humidity);
     }
 
-    // --- Tarih ---
     if (dateStrS != lastDate)
     {
         lastDate = dateStrS;
@@ -64,7 +61,6 @@ void updateTFT(float temperature, float humidity, const char *timeStr, const cha
         tft.println(dateStr);
     }
 
-    // --- Saat ---
     if (timeStrS != lastTime)
     {
         lastTime = timeStrS;
